@@ -1,5 +1,30 @@
-apply plugin: 'java'
+apply plugin: 'war'
+war.archiveName = war_name
+project.webAppDirName = 'WebContent'
 
-repositories {
-    mavenCentral()
+println '################# gradle-ear.war #################';
+
+List<String> listSourceFolder = new ArrayList<String>()
+listSourceFolder.add("src.adm")
+
+sourceSets {
+	main {
+		java {
+  			srcDirs = listSourceFolder
+		}
+	}
+}
+
+dependencies {
+    compile project(':gradle-ear.ejb')
+    
+	// https://mvnrepository.com/artifact/javax.servlet.jsp/jsp-api
+	compile group: 'javax.servlet.jsp', name: 'jsp-api', version: '2.2'
+	
+	// https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api
+	compile group: 'org.apache.tomcat', name: 'tomcat-servlet-api', version: '8.5.3'
+
+	// https://mvnrepository.com/artifact/org.springframework/spring-orm
+	//compile group: 'org.springframework', name: 'spring-orm', version: '4.3.1.RELEASE'
+
 }

@@ -1,5 +1,19 @@
 apply plugin: 'java'
 
-repositories {
-    mavenCentral()
+println '################# gradle-ear.entity #################';
+
+List<String> listSourceFolder = new ArrayList<String>()
+listSourceFolder.add("src.adm")
+
+jar {
+	jar.archiveName = entity_name
+}
+
+    
+sourceSets {
+	main {
+		java {
+  			srcDirs = listSourceFolder
+		}
+	}
 }

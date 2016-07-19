@@ -1,6 +1,51 @@
-apply plugin: 'java'
+// VER: https://jadsonjs.wordpress.com/2016/01/03/build-a-no-usual-project-with-gradle/
+// http://www.anexinet.com/blog/six-ways-to-package-a-java-application-with-gradle/
+// http://stackoverflow.com/questions/26938205/gradle-generate-eclipse-project-ear-project
 
-repositories {
-    mavenCentral()
+apply plugin: 'ear'
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
 }
 
+dependencies {
+
+	deploy project(path: 'gradle-ear.entity', configuration: 'archives')
+    deploy project(path: 'gradle-ear.ejb', configuration: 'archives')
+    deploy project(path: 'gradle-ear.war', configuration: 'archives')
+    
+    //earlib project(path: 'gradle-ear.entity', configuration: 'archives')
+    //earlib project(path: 'gradle-ear.ejb', configuration: 'compile')
+
+    //deploy project(path: 'gradle-ear.entity', configuration: 'archives')
+    // deploy project(path: 'Project2.jar', configuration: 'archives')
+    // deploy project(path: 'Project2.war', configuration: 'archives')
+    //earlib fileTree(dir: 'lib', include: '*.jar')
+    //earlib project(path: 'gradle-ear.war', configuration: 'compile')
+
+}
+
+
+ear {
+    libDirName = "lib"
+    deploymentDescriptor {
+        applicationName = "gradle"
+        initializeInOrder = true
+        displayName = "gradle"
+        //module(libDirName + "/" + entity_name, "java")
+        module(entity_name, "java")
+        module(ejb_name, "ejb")
+        webModule(war_name, "/gradle")
+    }
+}
+
+uploadArchives {
+    repositories {
+        flatDir {
+            dirs file(jboss_home)
+            println '################### uploadArchives: ' + jboss_home
+        }
+    }
+}

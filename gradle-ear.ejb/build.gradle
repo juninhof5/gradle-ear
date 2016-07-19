@@ -1,6 +1,25 @@
 apply plugin: 'java'
 
-repositories {
-    mavenCentral()
+println '################# gradle-ear.ejb #################';
+
+List<String> listSourceFolder = new ArrayList<String>()
+listSourceFolder.add("src.adm")
+
+jar {
+	jar.archiveName = ejb_name
 }
 
+sourceSets {
+	main {
+		java {
+  			srcDirs = listSourceFolder
+		}
+	}
+}
+
+dependencies {
+    // compile project(':gradle-ear.entity')
+    
+    // https://mvnrepository.com/artifact/org.springframework/spring-webmvc
+	compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.1.RELEASE'        
+}
