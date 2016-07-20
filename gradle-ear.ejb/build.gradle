@@ -1,13 +1,10 @@
 apply plugin: 'java'
+jar.archiveName = ejb_name
 
 println '################# gradle-ear.ejb #################';
 
 List<String> listSourceFolder = new ArrayList<String>()
 listSourceFolder.add("src.adm")
-
-jar {
-	jar.archiveName = ejb_name
-}
 
 sourceSets {
 	main {

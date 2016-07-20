@@ -6,6 +6,6 @@
 <title>Aplicação WAR GRADLE</title>
 </head>
 <body>
-	<h1>Bem Vindo - Aplicação WEB WAR com GRADLE</h1>
+	<h1>Bem Vindo - Aplicação WEB EAR com GRADLE</h1>
 </body>
 </html>

@@ -15,9 +15,9 @@ dependencies {
 	deploy project(path: 'gradle-ear.entity', configuration: 'archives')
     deploy project(path: 'gradle-ear.ejb', configuration: 'archives')
     deploy project(path: 'gradle-ear.war', configuration: 'archives')
-    
-    //earlib project(path: 'gradle-ear.entity', configuration: 'archives')
+
     //earlib project(path: 'gradle-ear.ejb', configuration: 'compile')
+    //earlib project(path: 'gradle-ear.war', configuration: 'compile')
 
     //deploy project(path: 'gradle-ear.entity', configuration: 'archives')
     // deploy project(path: 'Project2.jar', configuration: 'archives')
@@ -41,11 +41,23 @@ ear {
     }
 }
 
+/*
 uploadArchives {
     repositories {
         flatDir {
             dirs file(jboss_home)
             println '################### uploadArchives: ' + jboss_home
+        }
+    }
+}
+*/
+
+uploadArchives {
+    apply plugin: 'maven'
+    println '################### uploadArchives: ' + jboss_home
+    repositories {
+        mavenDeployer {
+            repository(url: "file://development/java/server/wildfly-10.0.0.Final/standalone/deployments")
         }
     }
 }

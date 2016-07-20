@@ -16,7 +16,13 @@ sourceSets {
 }
 
 dependencies {
+
+	// providedCompile não inclui o(s) jar(s) no diretório: WEB-INF/lib
+    //providedCompile project(':gradle-ear.ejb')
     compile project(':gradle-ear.ejb')
+    
+    // https://mvnrepository.com/artifact/org.springframework/spring-webmvc
+	//compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.1.RELEASE'
     
 	// https://mvnrepository.com/artifact/javax.servlet.jsp/jsp-api
 	compile group: 'javax.servlet.jsp', name: 'jsp-api', version: '2.2'
