@@ -13,8 +13,10 @@ public class HomeController {
 	private HomeService homeService;
 
 	@RequestMapping("/") // tem a função de definir que o metodo atende a um determinado path ou endereço. Neste caso estamos definindo que o metodo index atenderá as requisições que chegarem na raiz do nosso projeto ("/").
-	public String index(){
-		System.out.println(homeService.getMessage());
+	public String index() {
+		System.out.println("index");
+		System.out.println("Mensagem: " + homeService.getMessage());
+		System.out.println("Produto: " + homeService.getProduto().getDescricao());
 		return "home";
 	}
 

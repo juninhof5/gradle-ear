@@ -22,7 +22,7 @@ dependencies {
     //deploy project(path: 'gradle-ear.entity', configuration: 'archives')
     // deploy project(path: 'Project2.jar', configuration: 'archives')
     // deploy project(path: 'Project2.war', configuration: 'archives')
-    //earlib fileTree(dir: 'lib', include: '*.jar')
+    //earlib fileTree(dir: libDirName, exclude: ejb_name)
     //earlib project(path: 'gradle-ear.war', configuration: 'compile')
 
 }
@@ -34,7 +34,7 @@ ear {
         applicationName = "gradle"
         initializeInOrder = true
         displayName = "gradle"
-        //module(libDirName + "/" + entity_name, "java")
+        //module(libDirName + "/*.java", "java")
         module(entity_name, "java")
         module(ejb_name, "ejb")
         webModule(war_name, "/gradle")

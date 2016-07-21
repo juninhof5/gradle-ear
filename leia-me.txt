@@ -1,1 +1,18 @@
 Link APP: http://localhost:8080/gradle
+
+Detalhes Gradle EAR:
+	- https://docs.gradle.org/current/userguide/ear_plugin.html
+	- https://docs.gradle.org/current/dsl/org.gradle.plugins.ear.Ear.html
+
+####### LAYOUT PROJETO #############################################################################################
+Diretório (Padrão)           SIGNIFICADO
+src/main/application         Recursos Ear, tais como um diretório META-INF
+
+
+-> O plugin EAR adiciona suporte para empacotar arquivo EAR para aplicações WEB.
+-> O plugin EAR adiciona a seguinte TASK(default) para o projeto
+	Task name: ear
+    Descrição: Monta o arquivo EAR da aplicação
+-> Ele não requer o plugin Java, mas para projeto que usa o plugin java ele desabilita a geração default do arquivo JAR.
+-> Para usar o plugin EAR, incluir o seguinte em seu script build: apply plugin: 'ear'	
+

@@ -15,6 +15,11 @@ sourceSets {
 	}
 }
 
+war {
+  rootSpec.exclude("**/" + entity_name)
+  rootSpec.exclude("**/" + ejb_name)
+}
+
 dependencies {
 
 	// providedCompile não inclui o(s) jar(s) no diretório: WEB-INF/lib

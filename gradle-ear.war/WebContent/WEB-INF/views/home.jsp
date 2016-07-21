@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" charset="UTF-8">
-<title>Aplicação WAR GRADLE</title>
+<title>Aplicação EAR GRADLE</title>
 </head>
 <body>
 	<h1>Bem Vindo - Aplicação WEB EAR com GRADLE</h1>
