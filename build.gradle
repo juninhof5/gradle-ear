@@ -3,6 +3,7 @@
 // http://stackoverflow.com/questions/26938205/gradle-generate-eclipse-project-ear-project
 
 apply plugin: 'ear'
+ear.archiveName = ear_name
 
 allprojects {
     repositories {
@@ -41,23 +42,11 @@ ear {
     }
 }
 
-/*
-uploadArchives {
-    repositories {
-        flatDir {
-            dirs file(jboss_home)
-            println '################### uploadArchives: ' + jboss_home
-        }
-    }
-}
-*/
-
-uploadArchives {
-    apply plugin: 'maven'
-    println '################### uploadArchives: ' + jboss_home
-    repositories {
-        mavenDeployer {
-            repository(url: "file://development/java/server/wildfly-10.0.0.Final/standalone/deployments")
-        }
+task deploy (dependsOn: build) {
+    copy {
+        println '######## copiando arquivo [' + ear.archiveName + '] para o server...'
+        from "build/libs"
+        into jboss_home
+        include ear.archiveName
     }
 }
