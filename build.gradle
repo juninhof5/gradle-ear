@@ -17,7 +17,7 @@ dependencies {
     deploy project(path: 'gradle-ear.ejb', configuration: 'archives')
     deploy project(path: 'gradle-ear.war', configuration: 'archives')
 
-    //earlib project(path: 'gradle-ear.ejb', configuration: 'compile')
+    //earlib project(path: 'gradle-ear.ejb', configuration: 'compile') // copia as libs para a pasta "lib" do ear
     //earlib project(path: 'gradle-ear.war', configuration: 'compile')
 
     //deploy project(path: 'gradle-ear.entity', configuration: 'archives')
